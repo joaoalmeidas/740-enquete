@@ -51,6 +51,8 @@ public class EnqueteApp {
 	public static void exibeRelatorio(Enquete[] pesquisa) {
 		
 		double media = 0 ;
+		int[] totalPontos = new int[5];
+		int maior = Integer.MIN_VALUE, menor = Integer.MAX_VALUE, questaoMaior = 0, questaoMenor = 0;
 		
 		//imprime cabeçalho das colunas
 		System.out.printf("\t\t\t\t\t");
@@ -72,7 +74,7 @@ public class EnqueteApp {
 				
 			}
 			
-			//media
+			//media e total de pontos por questao
 			
 			media = 0;
 			
@@ -81,15 +83,40 @@ public class EnqueteApp {
 				if(pesquisa[0].getRespostas()[i][k] != 0) {
 					
 					media += (k+1) * pesquisa[0].getRespostas()[i][k];
+					totalPontos[i] += (k+1) * pesquisa[0].getRespostas()[i][k];
 					
 				}
 				
-				
 			}
 			
-			System.out.println(media/5);
+			System.out.println(media/pesquisa[0].getRespostas().length);
 				
 		}
+		
+		//verifica maior e menor valor
+		for(int i = 0; i < totalPontos.length; i++) {
+			
+			if(totalPontos[i] > maior ) {
+				maior = totalPontos[i];
+				questaoMaior = i;
+			}
+			
+			if(totalPontos[i] < menor) {
+				menor = totalPontos[i];
+				questaoMenor = i;
+			}
+			
+		}
+		
+		System.out.println("\nQuestão com mais pontos:\n" +pesquisa[0].getPerguntas()[questaoMaior]+
+						   "\nPontos:"+maior+"\n");
+		
+		System.out.println("Questão com menos pontos:\n" +pesquisa[0].getPerguntas()[questaoMenor]+
+				       	   "\nPontos:"+menor+"\n");
+		
+		
+		
+		
 		
 	}
 
