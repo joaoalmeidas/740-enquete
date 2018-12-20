@@ -41,7 +41,6 @@ public class EnqueteApp {
 				
 			}
 			
-			
 		}
 		
 		exibeRelatorio(pesquisa);
@@ -113,10 +112,6 @@ public class EnqueteApp {
 		
 		System.out.println("Questão com menos pontos:\n" +pesquisa[0].getPerguntas()[questaoMenor]+
 				       	   "\nPontos:"+menor+"\n");
-		
-		
-		
-		
 		
 	}
 
