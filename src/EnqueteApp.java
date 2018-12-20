@@ -28,7 +28,7 @@ public class EnqueteApp {
 		
 		for(int i = 0; i < pesquisa.length; i++) {
 			
-			System.out.printf("Entrevistado %d\nClassifique as seguintes questões com um valor entre 1 e 10.", i);
+			System.out.printf("Entrevistado %d\nClassifique as seguintes questões com um valor entre 1 e 10.\n", i+1);
 			
 			//mostra as perguntas
 			for(int j = 0; j < pesquisa[i].getPerguntas().length; j++) {
@@ -41,16 +41,38 @@ public class EnqueteApp {
 			}
 			
 			
-			
 		}
 		
-		//exibeRelatorio(pesquisa);
-		
-		
-		
+		exibeRelatorio(pesquisa);
 		
 	}
 	
-	
+	public static void exibeRelatorio(Enquete[] pesquisa) {
+		
+		//imprime cabeçalho das colunas
+		System.out.printf("\t\t\t\t\t");
+		for(int i = 1; i <= pesquisa[0].getRespostas()[0].length; i++) {
+			
+			System.out.printf("%d\t", i);
+			
+		}
+		System.out.println("\n");
+		
+		//imprime linhas
+		for(int i = 0; i < pesquisa[0].getRespostas().length; i++) {
+			
+			System.out.printf(pesquisa[0].getPerguntas()[i]+"\t");
+			
+			for(int j = 0; j < pesquisa[0].getRespostas()[0].length ; j++) {
+				
+				System.out.printf("%d\t", pesquisa[0].getRespostas()[i][j]);
+				
+			}
+			
+			System.out.println();
+				
+		}
+		
+	}
 
 }
