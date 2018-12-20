@@ -25,6 +25,7 @@ public class EnqueteApp {
 		
 		System.out.println("Pesquisa sobre o meio ambiente:");
 		
+		//exibeRelatorio(pesquisa);
 		
 		for(int i = 0; i < pesquisa.length; i++) {
 			
@@ -49,6 +50,8 @@ public class EnqueteApp {
 	
 	public static void exibeRelatorio(Enquete[] pesquisa) {
 		
+		double media = 0 ;
+		
 		//imprime cabeçalho das colunas
 		System.out.printf("\t\t\t\t\t");
 		for(int i = 1; i <= pesquisa[0].getRespostas()[0].length; i++) {
@@ -56,7 +59,7 @@ public class EnqueteApp {
 			System.out.printf("%d\t", i);
 			
 		}
-		System.out.println("\n");
+		System.out.println("Média\n");
 		
 		//imprime linhas
 		for(int i = 0; i < pesquisa[0].getRespostas().length; i++) {
@@ -69,7 +72,22 @@ public class EnqueteApp {
 				
 			}
 			
-			System.out.println();
+			//media
+			
+			media = 0;
+			
+			for(int k = 0; k < pesquisa[0].getRespostas()[0].length; k++) {
+				
+				if(pesquisa[0].getRespostas()[i][k] != 0) {
+					
+					media += (k+1) * pesquisa[0].getRespostas()[i][k];
+					
+				}
+				
+				
+			}
+			
+			System.out.println(media/5);
 				
 		}
 		
